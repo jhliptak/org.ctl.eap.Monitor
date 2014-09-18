@@ -38,6 +38,7 @@ public class eapMonitor
 	private MBeanServerConnection connection;
 	private String warning, critical;
 	private String attributeName, attributeKey, replaceName, useAttr, webConnector = null;
+	private String UOM = "";
 	private Long totalTime;
     private String methodName;
 	private String object;
@@ -141,6 +142,9 @@ public class eapMonitor
                 }
                 else if(option.equals("-add")) {
                 	additionalArgs.add(args[++i]);
+                }
+                else if(option.equals("-U")) {
+                	UOM = args[++i];
                 }
                 else if(option.equals("-jvmhealth")) {
                 	jvmHealth = true;
@@ -360,7 +364,8 @@ public class eapMonitor
 		if (replaceName != null){
 			replaceName(eapAttr, replaceName);
     	} 
-            eapAttr.put("perfData", eapAttr.get("Attribute") +"="+ eapAttr.get("Value")+thresholds+";;");
+        eapAttr.put("perfData", eapAttr.get("Attribute") 
+        		+"="+ eapAttr.get("Value")+UOM+thresholds+";;");
 		return eapAttr;
 	}
 	
@@ -402,6 +407,12 @@ public class eapMonitor
 	    	}
     	}
 		return "0";
+	}
+	public String getUOM() {
+		return UOM;
+	}
+	public void setUOM(String uOM) {
+		UOM = uOM;
 	}
 }
 
