@@ -387,9 +387,12 @@ public class eapMonitor
 			newData = Double.parseDouble(checkData.toString()) - Double.parseDouble(number); 
 		} else if(operator.equals("+")) {
 			newData = Double.parseDouble(checkData.toString()) + Double.parseDouble(number); 
-		} else newData = 0;
+		} else {
+			newData = 0;
+		}
 		return (Object)Double.parseDouble(decimalPlaces((float)newData));
 	}
+	
 	public String findAttrValue(String attribute) {
 		for (Map<String, String> a: eapAttrList){
 		    for (Map.Entry<String, String> entry : a.entrySet()){

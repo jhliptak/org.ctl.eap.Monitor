@@ -6,7 +6,7 @@
     <name>eapMonitor</name>
     <groupId>eapMonitor</groupId>
     <artifactId>eapMonitor</artifactId>
-    <version>1.1</version>
+    <version>1.3</version>
 
     <packaging>jar</packaging>
 	<url>https://github.com/ppresto/org.ctl.jmx.multiQuery.git</url>
@@ -85,22 +85,25 @@
 				<artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 
             <plugin>
 				<artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5</version>
 				<configuration>
 					<finalName>${project.name}</finalName>
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>eapMonitor.eapMonitor</mainClass>
+							<mainClass>eapMonitor.eapMultiQuery</mainClass>
 						</manifest>
+						<manifestEntries>
+                            <Class-Path>./lib/jboss-cli-client.jar</Class-Path>
+                        </manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
